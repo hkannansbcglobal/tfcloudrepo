@@ -5,7 +5,7 @@ terraform {
     organization = "example-org-e13d48"
 
     workspaces {
-      name = "getting-started"
+      name = "tfc-from-git"
     }
   }
 
