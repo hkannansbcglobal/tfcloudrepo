@@ -19,7 +19,7 @@ resource "fakewebservices_vpc" "primary_vpc_git" {
   cidr_block = "0.0.0.0/1"
 }
 
-resource "fakewebservices_server" "servers" {
+resource "fakewebservices_server" "servers_git" {
   count = 2
 
   name = "Server ${count.index + 1}"
@@ -29,7 +29,7 @@ resource "fakewebservices_server" "servers" {
 
 resource "fakewebservices_load_balancer" "primary_lb_git" {
   name    = "Primary Load Balancer"
-  servers = fakewebservices_server.servers[*].name
+  servers = fakewebservices_server.servers_git[*].name
 }
 
 resource "fakewebservices_database" "prod_db_git" {
