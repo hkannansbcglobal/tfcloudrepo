@@ -14,25 +14,25 @@
 # in backend.tf.
 
 
-resource "fakewebservices_vpc" "primary_vpc" {
+resource "fakewebservices_vpc" "primary_vpc_git" {
   name       = "Primary VPC"
   cidr_block = "0.0.0.0/1"
 }
 
-resource "fakewebservices_server" "servers" {
+resource "fakewebservices_server" "servers_git" {
   count = 2
 
   name = "Server ${count.index + 1}"
   type = "t2.micro"
-  vpc  = fakewebservices_vpc.primary_vpc.name
+  vpc  = fakewebservices_vpc.primary_vpc_git.name
 }
 
-resource "fakewebservices_load_balancer" "primary_lb" {
+resource "fakewebservices_load_balancer" "primary_lb_git" {
   name    = "Primary Load Balancer"
-  servers = fakewebservices_server.servers[*].name
+  servers = fakewebservices_server.servers_git[*].name
 }
 
-resource "fakewebservices_database" "prod_db" {
+resource "fakewebservices_database" "prod_db_git" {
   name = "Production DB"
   size = 256
 }
